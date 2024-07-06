@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"strconv"
 	"strings"
 
@@ -35,7 +34,7 @@ func (h *RsvpToEventHandler) Execute(ctx context.Context, request events.APIGate
 	if !found {
 		return events.APIGatewayProxyResponse{}, errors.New("event_id not found in path parameters")
 	}
-	fmt.Println(eventId)
+
 	parsedEventId, err := strconv.ParseUint(eventId, 10, 0)
 	if err != nil {
 		return events.APIGatewayProxyResponse{}, err
