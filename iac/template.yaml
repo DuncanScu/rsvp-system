@@ -1,0 +1,12 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  S3Bucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: !Sub "my-s3-bucket-${AWS::AccountId}-${AWS::Region}"
+      AccessControl: Private
+      VersioningConfiguration:
+        Status: Enabled
+      Tags:
+        - Key: Name
+          Value: MyS3Bucket
