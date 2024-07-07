@@ -25,5 +25,10 @@ jobs:
       - name: Zip
         run: zip function.zip function
 
+      - name: Configure AWS Creds
+        run: aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Set AWS region
+        run: aws configure set region eu-west-2
+
       - name: Upload to lambda
-        run: aws lambda update-function-code --function-name "rsvp-system" --zip-file fileb://lambda.zip" --region="eu-west-2"
+        run: aws lambda update-function-code --function-name "rsvp-system" --zip-file fileb://lambda.zip"
