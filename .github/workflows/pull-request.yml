@@ -1,8 +1,7 @@
-# Write a github action workflow that will build my go lambda, thne zip it and upload it to an s3 bucked
 name: Pull Request
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
