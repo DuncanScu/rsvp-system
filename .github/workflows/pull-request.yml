@@ -19,10 +19,10 @@ jobs:
           go-version: 1.22.2
 
       - name: Buld
-        run: go build -o function main.go
+        run: go build -o bootstrap main.go
 
       - name: Zip
-        run: zip function.zip function
+        run: zip bootstrap.zip bootstrap 
 
       - name: Configure AWS Creds
         run: aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -31,4 +31,4 @@ jobs:
         run: aws configure set region eu-west-2
 
       - name: Upload to lambda
-        run: aws lambda update-function-code --function-name rsvp-system --zip-file fileb://function.zip
+        run: aws lambda update-function-code --function-name rsvp-system --zip-file fileb://bootstrap.zip
